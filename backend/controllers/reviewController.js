@@ -10,3 +10,12 @@ export const getReviews = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const createReview = async (req, res) => {
+  try {
+    const review = await Review.create(req.body);
+    res.status(201).json(review);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
