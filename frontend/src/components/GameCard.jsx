@@ -3,19 +3,19 @@ function GameCard({ game }) {
     <div className="game-card">
       <img src={game.thumb} alt={game.title} />
 
-      <h3>{game.title}</h3>
+      <div className="game-info">
+        <h3>{game.title}</h3>
 
-      <p>
-        <strong>Sale Price:</strong> ${game.salePrice}
-      </p>
+        <p className="sale-price">${game.salePrice}</p>
 
-      <p>
-        <strong>Normal Price:</strong> ${game.normalPrice}
-      </p>
+        <p className="normal-price">
+          Regular: ${game.normalPrice}
+        </p>
 
-      <p>
-        <strong>You Save:</strong> {game.savings.slice(0, 5)}%
-      </p>
+        <p className="discount">
+          Save {Math.round(game.savings)}%
+        </p>
+      </div>
     </div>
   );
 }
