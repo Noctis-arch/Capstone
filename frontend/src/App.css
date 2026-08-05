@@ -134,3 +134,8 @@ body {
 .search-form button:hover {
   background: #1f3fb5;
 }
+
+.game-link {
+  text-decoration: none;
+  color: inherit;
+}
