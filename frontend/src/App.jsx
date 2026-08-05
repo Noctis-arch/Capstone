@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GameDetails from "./pages/GameDetails";
 
 import Home from "./pages/Home";
 import Reviews from "./pages/Reviews";
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/game/:id" element={<GameDetails />} />
       </Routes>
     </BrowserRouter>
   );
