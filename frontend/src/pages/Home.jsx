@@ -1,8 +1,12 @@
 function Home() {
   return (
-    <div>
+    <div className="home">
       <h1>Welcome to GameVault</h1>
-      <p>Discover games and share your reviews.</p>
+
+      <p>
+        Discover new games, explore popular titles, and share your reviews with
+        other gamers.
+      </p>
     </div>
   );
 }
