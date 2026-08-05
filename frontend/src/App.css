@@ -105,3 +105,32 @@ body {
   color: green;
   font-weight: bold;
 }
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 40px 0;
+}
+
+.search-form input {
+  width: 400px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 2px solid #2d4fd7;
+  font-size: 16px;
+}
+
+.search-form button {
+  padding: 14px 24px;
+  background: #2d4fd7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-form button:hover {
+  background: #1f3fb5;
+}

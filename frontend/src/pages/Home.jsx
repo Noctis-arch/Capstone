@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getGames } from "../services/gameService";
+import { getGames, searchGames } from "../services/gameService";
 import GameList from "../components/GameList";
+import SearchBar from "../components/SearchBar";
 
 function Home() {
   const [games, setGames] = useState([]);
@@ -18,6 +19,20 @@ function Home() {
     loadGames();
   }, []);
 
+const handleSearch = async (title) => {
+  try {
+    const data = await searchGames(title);
+
+    const filteredGames = data.filter((game) =>
+      game.title.toLowerCase().includes(title.toLowerCase())
+    );
+
+    setGames(filteredGames);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   return (
     <div className="home">
       <h1>Welcome to GameVault</h1>
@@ -26,6 +41,9 @@ function Home() {
         Discover new games, explore popular titles, and find the best PC game
         deals.
       </p>
+      <SearchBar onSearch={handleSearch} />
+
+      <GameList games={games} />
 
       <GameList games={games} />
     </div>
