@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getReviews } from "../services/reviewService";
+import ReviewForm from "../components/ReviewForm";
 
 function GameDetails() {
   const location = useLocation();
@@ -52,5 +53,7 @@ function GameDetails() {
     </div>
   );
 }
+
+<ReviewForm />
 
 export default GameDetails;
