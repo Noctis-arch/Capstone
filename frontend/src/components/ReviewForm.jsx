@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createReview } from "../services/reviewService";
 
-function ReviewForm() {
+function ReviewForm({ game }) {
     const [username, setUsername] = useState("");
     const [rating, setRating] = useState(5);
     const [review, setReview] = useState("");
@@ -13,6 +13,8 @@ function ReviewForm() {
 
         try {
             await createReview({
+                gameId: game.gameID,
+                gameTitle: game.title,
                 username,
                 rating,
                 review,
@@ -35,6 +37,19 @@ function ReviewForm() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
             />
+
+            <br />
+            <br />
+            <select
+                value={rating}
+                onChange={(e) => setRating(Number(e.target.value))}
+            >
+                <option value={1}>1 Star</option>
+                <option value={2}>2 Stars</option>
+                <option value={3}>3 Stars</option>
+                <option value={4}>4 Stars</option>
+                <option value={5}>5 Stars</option>
+            </select>
 
             <br />
             <br />

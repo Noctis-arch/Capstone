@@ -51,7 +51,7 @@ function GameDetails() {
         ))
       )}
 
-      <ReviewForm />
+      <ReviewForm game={game} />
     </div>
   );
 }
