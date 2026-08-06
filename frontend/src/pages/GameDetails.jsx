@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getReviews } from "../services/reviewService";
+import { getReviews, deleteReview, } from "../services/reviewService";
 import ReviewForm from "../components/ReviewForm";
 
 function GameDetails() {
@@ -8,18 +8,27 @@ function GameDetails() {
   const game = location.state?.game;
   const [reviews, setReviews] = useState([]);
 
-const loadReviews = async () => {
-  try {
-    const data = await getReviews(game.gameID);
-    setReviews(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
+  const loadReviews = async () => {
+    try {
+      const data = await getReviews(game.gameID);
+      setReviews(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-useEffect(() => {
-  loadReviews();
-}, []);
+  useEffect(() => {
+    loadReviews();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteReview(id);
+      await loadReviews();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (!game) {
     return <h2>Game not found.</h2>;
@@ -46,7 +55,15 @@ useEffect(() => {
       ) : (
         reviews.map((review) => (
           <div key={review._id} className="review-card">
+            <p><strong>{review.username}</strong></p>
+
+            <p>⭐ {review.rating}/5</p>
+
             <p>{review.review}</p>
+
+            <button onClick={() => handleDelete(review._id)}>
+              Delete
+            </button>
           </div>
         ))
       )}
