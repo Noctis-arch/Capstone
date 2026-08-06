@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createReview } from "../services/reviewService";
 
-function ReviewForm({ game }) {
+function ReviewForm({ game, onReviewAdded }) {
     const [username, setUsername] = useState("");
     const [rating, setRating] = useState(5);
     const [review, setReview] = useState("");

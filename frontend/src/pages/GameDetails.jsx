@@ -8,18 +8,18 @@ function GameDetails() {
   const game = location.state?.game;
   const [reviews, setReviews] = useState([]);
 
-  useEffect(() => {
-    const loadReviews = async () => {
-      try {
-        const data = await getReviews();
-        setReviews(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+const loadReviews = async () => {
+  try {
+    const data = await getReviews();
+    setReviews(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-    loadReviews();
-  }, []);
+useEffect(() => {
+  loadReviews();
+}, []);
 
   if (!game) {
     return <h2>Game not found.</h2>;
@@ -51,7 +51,10 @@ function GameDetails() {
         ))
       )}
 
-      <ReviewForm game={game} />
+      <ReviewForm
+        game={game}
+        onReviewAdded={loadReviews}
+      />
     </div>
   );
 }
