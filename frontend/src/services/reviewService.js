@@ -1,23 +1,22 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/reviews";
+const API = "http://localhost:5000/reviews";
 
 export const getReviews = async () => {
-  const response = await axios.get(API_URL);
+  const response = await axios.get(API);
   return response.data;
 };
 
-export const createReview = async (reviewData) => {
-  const response = await axios.post(API_URL, reviewData);
+export const createReview = async (review) => {
+  const response = await axios.post(API, review);
   return response.data;
 };
 
-export const updateReview = async (id, reviewData) => {
-  const response = await axios.put(`${API_URL}/${id}`, reviewData);
+export const updateReview = async (id, review) => {
+  const response = await axios.put(`${API}/${id}`, review);
   return response.data;
 };
 
 export const deleteReview = async (id) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
-  return response.data;
+  await axios.delete(`${API}/${id}`);
 };
