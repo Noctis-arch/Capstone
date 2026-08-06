@@ -2,7 +2,15 @@ import Review from "../models/Review.js";
 
 export const getReviews = async (req, res) => {
   try {
-    const reviews = await Review.find();
+    const { gameId } = req.query;
+
+    let reviews;
+
+    if (gameId) {
+      reviews = await Review.find({ gameId });
+    } else {
+      reviews = await Review.find();
+    }
 
     res.json(reviews);
   } catch (error) {
@@ -14,10 +22,10 @@ export const createReview = async (req, res) => {
   try {
     const review = await Review.create(req.body);
     res.status(201).json(review);
- } catch (error) {
-  console.error(error);
-  res.status(400).json({ message: error.message });
-}
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: error.message });
+  }
 };
 
 export const updateReview = async (req, res) => {

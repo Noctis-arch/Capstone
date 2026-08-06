@@ -20,8 +20,12 @@ function ReviewForm({ game, onReviewAdded }) {
                 review,
             });
 
+            await onReviewAdded();
+
             alert("Review submitted!");
 
+            setUsername("");
+            setRating(5);
             setReview("");
         } catch (error) {
             console.error(error);

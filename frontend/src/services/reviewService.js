@@ -2,8 +2,13 @@ import axios from "axios";
 
 const API = "http://localhost:3000/reviews";
 
-export const getReviews = async () => {
-  const response = await axios.get(API);
+export const getReviews = async (gameId) => {
+  const response = await axios.get(API, {
+    params: {
+      gameId,
+    },
+  });
+
   return response.data;
 };
 

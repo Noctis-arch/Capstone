@@ -10,7 +10,7 @@ function GameDetails() {
 
 const loadReviews = async () => {
   try {
-    const data = await getReviews();
+    const data = await getReviews(game.gameID);
     setReviews(data);
   } catch (error) {
     console.error(error);
