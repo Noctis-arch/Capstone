@@ -1,34 +1,57 @@
 import { useState } from "react";
+import { createReview } from "../services/reviewService";
 
 function ReviewForm() {
-  const [review, setReview] = useState("");
+    const [username, setUsername] = useState("");
+    const [rating, setRating] = useState(5);
+    const [review, setReview] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    console.log(review);
+        if (!review.trim()) return;
 
-    setReview("");
-  };
+        try {
+            await createReview({
+                username,
+                rating,
+                review,
+            });
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Write a Review</h2>
+            alert("Review submitted!");
 
-      <textarea
-        rows="5"
-        placeholder="Share your thoughts..."
-        value={review}
-        onChange={(e) => setReview(e.target.value)}
-      />
+            setReview("");
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-      <br />
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Write a Review</h2>
+            <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
 
-      <button type="submit">
-        Submit Review
-      </button>
-    </form>
-  );
+            <br />
+            <br />
+            <textarea
+                rows="5"
+                placeholder="Share your thoughts..."
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+            />
+
+            <br />
+
+            <button type="submit">
+                Submit Review
+            </button>
+        </form>
+    );
 }
 
 export default ReviewForm;

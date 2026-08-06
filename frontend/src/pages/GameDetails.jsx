@@ -50,10 +50,10 @@ function GameDetails() {
           </div>
         ))
       )}
+
+      <ReviewForm />
     </div>
   );
 }
-
-<ReviewForm />
 
 export default GameDetails;
