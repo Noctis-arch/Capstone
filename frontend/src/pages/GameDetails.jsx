@@ -7,6 +7,7 @@ function GameDetails() {
   const location = useLocation();
   const game = location.state?.game;
   const [reviews, setReviews] = useState([]);
+  const [editingReview, setEditingReview] = useState(null);
 
   const loadReviews = async () => {
     try {
@@ -57,9 +58,13 @@ function GameDetails() {
           <div key={review._id} className="review-card">
             <p><strong>{review.username}</strong></p>
 
-            <p>⭐ {review.rating}/5</p>
+            <p> {review.rating}/5</p>
 
             <p>{review.review}</p>
+
+            <button onClick={() => setEditingReview(review)}>
+              Edit
+            </button>
 
             <button onClick={() => handleDelete(review._id)}>
               Delete
