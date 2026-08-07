@@ -47,11 +47,17 @@ function GameDetails() {
 
       <img src={game.thumb} alt={game.title} />
 
-      <h2>${game.salePrice}</h2>
+      <h2 className="sale-price-large">
+        ${game.salePrice}
+      </h2>
 
-      <p>Regular Price: ${game.normalPrice}</p>
+      <p className="regular-price">
+        Regular Price: ${game.normalPrice}
+      </p>
 
-      <p>You Save: {Math.round(game.savings)}%</p>
+      <p className="discount-large">
+        Save {Math.round(game.savings)}%
+      </p>
 
       <hr />
 

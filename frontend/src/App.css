@@ -239,3 +239,65 @@ button:disabled {
   color: #1d4ed8;
   margin-top: 40px;
 }
+
+.review-card button {
+  margin: 8px 5px 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.review-card button:first-of-type {
+  background: #1d4ed8;
+  color: white;
+}
+
+.review-card button:last-of-type {
+  background: #dc2626;
+  color: white;
+}
+
+.review-card button:hover {
+  opacity: .9;
+}
+
+.sale-price-large {
+  font-size: 2.5rem;
+  color: #1d4ed8;
+  margin-bottom: 10px;
+}
+
+.regular-price {
+  color: #777;
+}
+
+.discount-large {
+  color: green;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.game-details form {
+  margin-top: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+.game-details textarea,
+.game-details input,
+.game-details select {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.game-details select {
+  margin-bottom: 35px;
+}
