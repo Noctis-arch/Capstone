@@ -61,43 +61,60 @@ function GameDetails() {
 
       <hr />
 
+      {reviews.length > 0 && (
+        <div className="review-summary">
+          <h3>
+            Average Rating:{" "}
+            {(
+              reviews.reduce(
+                (sum, review) => sum + review.rating,
+                0
+              ) / reviews.length
+            ).toFixed(1)}
+            /5
+          </h3>
+
+          <p>{reviews.length} Reviews</p>
+        </div>
+      )}
+
       <h2>User Reviews</h2>
 
       {reviews.length === 0 ? (
         <p>No reviews yet.</p>
       ) : (
         [...reviews]
-  .sort(
-    (a, b) =>
-      new Date(b.createdAt) -
-      new Date(a.createdAt)
-  )
-  .map((review) => (
-          <div key={review._id} className="review-card">
-            <h3>{review.username}</h3>
+          .sort(
+            (a, b) =>
+              new Date(b.createdAt) -
+              new Date(a.createdAt)
+          )
+          .map((review) => (
+            <div key={review._id} className="review-card">
+              <h3>{review.username}</h3>
 
-            <p> {review.rating}/5</p>
+              <p> {review.rating}/5</p>
 
-            <p>
-              {"⭐".repeat(review.rating)}
-            </p>
+              <p>
+                {"⭐".repeat(review.rating)}
+              </p>
 
-            <p>{review.review}</p>
+              <p>{review.review}</p>
 
-            <small>
-              Posted{" "}
-              {new Date(review.createdAt).toLocaleDateString()}
-            </small>
+              <small>
+                Posted{" "}
+                {new Date(review.createdAt).toLocaleDateString()}
+              </small>
 
-            <button onClick={() => setEditingReview(review)}>
-              Edit
-            </button>
+              <button onClick={() => setEditingReview(review)}>
+                Edit
+              </button>
 
-            <button onClick={() => handleDelete(review._id)}>
-              Delete
-            </button>
-          </div>
-        ))
+              <button onClick={() => handleDelete(review._id)}>
+                Delete
+              </button>
+            </div>
+          ))
       )}
       {editingReview && (
         <p>Editing review by {editingReview.username}</p>

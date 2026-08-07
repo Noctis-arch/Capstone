@@ -398,3 +398,15 @@ button:disabled {
     padding: 15px;
   }
 }
+
+.review-summary{
+  margin:30px 0;
+}
+
+.review-summary h3{
+  color:#1d4ed8;
+}
+
+.review-summary p{
+  color:#666;
+}
