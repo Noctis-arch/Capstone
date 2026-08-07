@@ -72,7 +72,9 @@ function GameDetails() {
           </div>
         ))
       )}
-
+      {editingReview && (
+        <p>Editing review by {editingReview.username}</p>
+      )}
       <ReviewForm
         game={game}
         onReviewAdded={loadReviews}
