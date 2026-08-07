@@ -22,7 +22,14 @@ function ReviewForm({
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!review.trim()) return;
+        if (
+            !username.trim() ||
+            !review.trim()
+        ) {
+            alert("Please complete all fields.");
+
+            return;
+        }
 
         try {
             if (editingReview) {
@@ -96,6 +103,7 @@ function ReviewForm({
             <br />
             <br />
             <textarea
+                minLength={10}
                 rows="5"
                 placeholder="Share your thoughts..."
                 value={review}
