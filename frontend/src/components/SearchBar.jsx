@@ -2,13 +2,18 @@ import { useState } from "react";
 
 function SearchBar({ onSearch }) {
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!search.trim()) return;
 
-    onSearch(search);
+    setLoading(true);
+
+    await onSearch(search);
+
+    setLoading(false);
   };
 
   return (
@@ -20,7 +25,12 @@ function SearchBar({ onSearch }) {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <button type="submit">Search</button>
+      <button
+        type="submit"
+        disabled={loading}
+      >
+        {loading ? "Searching..." : "Search"}
+      </button>
     </form>
   );
 }

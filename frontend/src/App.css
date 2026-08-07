@@ -171,3 +171,37 @@ body {
   color: #555;
   margin: 10px 0;
 }
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reviews-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.reviews-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.review-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+.review-card h3 {
+  margin-top: 0;
+  color: #1d4ed8;
+}
+
+.review-card small {
+  color: gray;
+}

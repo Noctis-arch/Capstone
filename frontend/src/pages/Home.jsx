@@ -19,19 +19,21 @@ function Home() {
     loadGames();
   }, []);
 
-const handleSearch = async (title) => {
-  try {
-    const data = await searchGames(title);
+  const handleSearch = async (title) => {
+    try {
+      const data = await searchGames(title);
 
-    const filteredGames = data.filter((game) =>
-      game.title.toLowerCase().includes(title.toLowerCase())
-    );
+      console.log(data);
 
-    setGames(filteredGames);
-  } catch (error) {
-    console.error(error);
-  }
-};
+      const filteredGames = data.filter((game) =>
+        game.title.toLowerCase().includes(title.toLowerCase())
+      );
+
+      setGames(filteredGames);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="home">
@@ -42,8 +44,6 @@ const handleSearch = async (title) => {
         deals.
       </p>
       <SearchBar onSearch={handleSearch} />
-
-      <GameList games={games} />
 
       <GameList games={games} />
     </div>
