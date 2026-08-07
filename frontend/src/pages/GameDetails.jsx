@@ -66,7 +66,13 @@ function GameDetails() {
       {reviews.length === 0 ? (
         <p>No reviews yet.</p>
       ) : (
-        reviews.map((review) => (
+        [...reviews]
+  .sort(
+    (a, b) =>
+      new Date(b.createdAt) -
+      new Date(a.createdAt)
+  )
+  .map((review) => (
           <div key={review._id} className="review-card">
             <h3>{review.username}</h3>
 
