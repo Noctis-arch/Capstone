@@ -62,6 +62,14 @@ function ReviewForm({
         }
     };
 
+    const handleCancel = () => {
+        setEditingReview(null);
+
+        setUsername("");
+        setRating(5);
+        setReview("");
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Write a Review</h2>
@@ -99,6 +107,15 @@ function ReviewForm({
             <button type="submit">
                 {editingReview ? "Update Review" : "Submit Review"}
             </button>
+
+            {editingReview && (
+                <button
+                    type="button"
+                    onClick={handleCancel}
+                >
+                    Cancel
+                </button>
+            )}
         </form>
     );
 }
