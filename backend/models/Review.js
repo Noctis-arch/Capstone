@@ -30,6 +30,10 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+reviewSchema.index({
+  gameId: 1,
+});
+
 const Review = mongoose.model("Review", reviewSchema);
 
 export default Review;
