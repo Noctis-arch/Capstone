@@ -46,12 +46,14 @@ function Home() {
 
   return (
     <div className="home">
-      <h1>Welcome to GameVault</h1>
+      <div className="hero">
+        <h1>Welcome to GameVault</h1>
 
-      <p>
-        Discover new games, explore popular titles, and find the best PC game
-        deals.
-      </p>
+        <p>
+          Browse thousands of PC game deals, compare prices, and read reviews from
+          the GameVault community.
+        </p>
+      </div>
       <SearchBar onSearch={handleSearch} />
 
       {loading ? (
