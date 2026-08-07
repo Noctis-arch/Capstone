@@ -195,6 +195,11 @@ button:disabled {
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  transition: .25s;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
 }
 
 .review-card h3 {
@@ -331,4 +336,11 @@ button:disabled {
 
 .search-form button:hover {
   transform: translateY(-2px);
+}
+
+.review-count {
+  text-align: center;
+  color: #666;
+  margin-bottom: 35px;
+  font-size: 18px;
 }
