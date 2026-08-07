@@ -77,6 +77,7 @@ function GameDetails() {
       )}
       <ReviewForm
         game={game}
+        editingReview={editingReview}
         onReviewAdded={loadReviews}
       />
     </div>

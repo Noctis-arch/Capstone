@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createReview } from "../services/reviewService";
 
-function ReviewForm({ game, onReviewAdded }) {
+function ReviewForm({
+    game,
+    editingReview,
+    onReviewAdded,
+}) {
     const [username, setUsername] = useState("");
     const [rating, setRating] = useState(5);
     const [review, setReview] = useState("");
+
+    useEffect(() => {
+        if (editingReview) {
+            setUsername(editingReview.username);
+            setRating(editingReview.rating);
+            setReview(editingReview.review);
+        }
+    }, [editingReview]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
