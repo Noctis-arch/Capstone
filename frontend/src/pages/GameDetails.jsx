@@ -24,6 +24,12 @@ function GameDetails() {
 
   const handleDelete = async (id) => {
     try {
+      const confirmed = window.confirm(
+        "Delete this review?"
+      );
+
+      if (!confirmed) return;
+
       await deleteReview(id);
       await loadReviews();
     } catch (error) {
