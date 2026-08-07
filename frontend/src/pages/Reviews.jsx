@@ -28,16 +28,21 @@ function Reviews() {
           <div key={review._id} className="review-card">
             <h3>{review.gameTitle}</h3>
 
-            <p>
-              <strong>{review.username}</strong>
+            <p className="review-user">
+              👤 <strong>{review.username}</strong>
             </p>
 
-            <p>{"⭐".repeat(review.rating)}</p>
+            <p className="review-stars">
+              {"⭐".repeat(review.rating)}
+              <span> ({review.rating}/5)</span>
+            </p>
 
-            <p>{review.review}</p>
+            <p className="review-text">
+              "{review.review}"
+            </p>
 
-            <small>
-              {new Date(review.createdAt).toLocaleDateString()}
+            <small className="review-date">
+              Posted on {new Date(review.createdAt).toLocaleDateString()}
             </small>
 
             <hr />

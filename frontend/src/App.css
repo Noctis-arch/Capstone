@@ -205,3 +205,32 @@ button:disabled {
 .review-card small {
   color: gray;
 }
+
+.review-user {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.review-stars {
+  color: #f5b301;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.review-stars span {
+  color: #555;
+  font-size: 15px;
+}
+
+.review-text {
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #333;
+}
+
+.review-date {
+  display: block;
+  margin-top: 15px;
+  color: #777;
+}
