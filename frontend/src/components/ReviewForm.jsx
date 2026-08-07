@@ -48,7 +48,11 @@ function ReviewForm({
 
             await onReviewAdded();
 
-            alert("Review submitted!");
+            alert(
+                editingReview
+                    ? "Review updated!"
+                    : "Review submitted!"
+            );
 
             setUsername("");
             setRating(5);
