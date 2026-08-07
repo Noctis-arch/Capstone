@@ -25,7 +25,11 @@ function Reviews() {
       </p>
 
       {reviews.length === 0 ? (
-        <p>No reviews have been posted yet.</p>
+        <p>
+          No community reviews yet.
+
+          Be the first person to review a game!
+        </p>
       ) : (
         [...reviews]
           .sort(
