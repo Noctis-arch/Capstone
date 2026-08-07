@@ -56,11 +56,20 @@ function GameDetails() {
       ) : (
         reviews.map((review) => (
           <div key={review._id} className="review-card">
-            <p><strong>{review.username}</strong></p>
+            <h3>{review.username}</h3>
 
             <p> {review.rating}/5</p>
 
+            <p>
+              {"⭐".repeat(review.rating)}
+            </p>
+
             <p>{review.review}</p>
+
+            <small>
+              Posted{" "}
+              {new Date(review.createdAt).toLocaleDateString()}
+            </small>
 
             <button onClick={() => setEditingReview(review)}>
               Edit
