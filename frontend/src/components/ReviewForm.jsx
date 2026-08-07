@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { createReview } from "../services/reviewService";
+import { createReview, updateReview, } from "../services/reviewService";
 
 function ReviewForm({
     game,
     editingReview,
+    setEditingReview,
     onReviewAdded,
 }) {
     const [username, setUsername] = useState("");
@@ -24,13 +25,26 @@ function ReviewForm({
         if (!review.trim()) return;
 
         try {
-            await createReview({
-                gameId: game.gameID,
-                gameTitle: game.title,
-                username,
-                rating,
-                review,
-            });
+            if (editingReview) {
+                await updateReview(editingReview._id, {
+                    gameId: game.gameID,
+                    gameTitle: game.title,
+                    username,
+                    rating,
+                    review,
+                });
+
+                setEditingReview(null);
+
+            } else {
+                await createReview({
+                    gameId: game.gameID,
+                    gameTitle: game.title,
+                    username,
+                    rating,
+                    review,
+                });
+            }
 
             await onReviewAdded();
 
@@ -79,7 +93,7 @@ function ReviewForm({
             <br />
 
             <button type="submit">
-                Submit Review
+                {editingReview ? "Update Review" : "Submit Review"}
             </button>
         </form>
     );
