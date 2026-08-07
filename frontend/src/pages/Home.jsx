@@ -5,14 +5,20 @@ import SearchBar from "../components/SearchBar";
 
 function Home() {
   const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searched, setSearched] = useState(false);
 
   useEffect(() => {
     const loadGames = async () => {
       try {
+        setLoading(true);
+
         const data = await getGames();
         setGames(data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -21,17 +27,20 @@ function Home() {
 
   const handleSearch = async (title) => {
     try {
-      const data = await searchGames(title);
+      setLoading(true);
 
-      console.log(data);
+      const data = await searchGames(title);
 
       const filteredGames = data.filter((game) =>
         game.title.toLowerCase().includes(title.toLowerCase())
       );
 
       setGames(filteredGames);
+      setSearched(true);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,7 +54,13 @@ function Home() {
       </p>
       <SearchBar onSearch={handleSearch} />
 
-      <GameList games={games} />
+      {loading ? (
+        <h2>Loading games...</h2>
+      ) : games.length === 0 && searched ? (
+        <h2>No games found.</h2>
+      ) : (
+        <GameList games={games} />
+      )}
     </div>
   );
 }

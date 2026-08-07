@@ -234,3 +234,8 @@ button:disabled {
   margin-top: 15px;
   color: #777;
 }
+
+.home h2 {
+  color: #1d4ed8;
+  margin-top: 40px;
+}
